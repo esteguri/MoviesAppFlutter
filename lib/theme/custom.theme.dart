@@ -5,11 +5,12 @@ class CustomThemeApp {
   static get ligth => ThemeData(
         primaryColor: ColorsApp.gray,
         fontFamily: "Poppins",
+        backgroundColor: ColorsApp.white,
         appBarTheme: AppBarTheme(
           backgroundColor: ColorsApp.primary,
           elevation: 0,
         ),
-        canvasColor: ColorsApp.white,
+        canvasColor: ColorsApp.primary,
       );
 
   static get dark => ThemeData(
@@ -21,7 +22,10 @@ class CustomThemeApp {
           backgroundColor: ColorsApp.primary,
           foregroundColor: ColorsApp.white,
           elevation: 0,
+          actionsIconTheme: IconThemeData(
+            color: ColorsApp.secondary,
+          ),
         ),
-        canvasColor: ColorsApp.secondary,
+        canvasColor: ColorsApp.primary,
       );
 }
