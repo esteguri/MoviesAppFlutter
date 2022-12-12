@@ -19,32 +19,14 @@ class MainHeader extends StatelessWidget {
           children: [
             Text(
               "Hello, what do you want to watch ?",
-              style: Get.theme.textTheme.headline5!.copyWith(
-                fontSize: 28,
-                color: Get.isDarkMode ? ColorsApp.secondary : ColorsApp.white,
-              ),
+              style: Theme.of(context).textTheme.headline5,
             ),
             TextField(
               cursorColor:
                   Get.isDarkMode ? ColorsApp.secondary : ColorsApp.white,
-              style: TextStyle(
-                color: Get.isDarkMode ? ColorsApp.secondary : ColorsApp.white,
-              ),
               decoration: InputDecoration(
                 isDense: true,
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 hintText: "Search",
-                fillColor: ColorsApp.blueLight,
-                focusColor: ColorsApp.blueLight,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  borderSide: BorderSide.none,
-                ),
                 filled: true,
                 prefixIcon: Icon(
                   Icons.search,

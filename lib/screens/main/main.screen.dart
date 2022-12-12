@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies_app/controllers/theme.controller.dart';
 import 'package:movies_app/screens/main/widgets/main-header.widget.dart';
+import 'package:movies_app/screens/main/widgets/movies-carousel.widget.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
@@ -29,25 +30,39 @@ class MainScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          const MainHeader(),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Get.theme.backgroundColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  topRight: Radius.circular(25),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: Get.height - Get.height * 0.1),
+          child: Column(
+            children: [
+              const MainHeader(),
+              Expanded(
+                child: Container(
+                  height: double.maxFinite,
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    left: 20,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).backgroundColor,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                  ),
+                  child: Center(
+                    child: Column(
+                      children: const [
+                        MoviesCarousel(title: "RECOMMENDED FOR YOU"),
+                        MoviesCarousel(title: "TOP RATED"),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              child: Center(
-                child: Text(
-                    "Hello!!! FLutter is dark ${_themeController.isDarkMode.value}"),
-              ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
