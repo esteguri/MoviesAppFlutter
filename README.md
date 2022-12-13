@@ -14,7 +14,7 @@ El artefacto de la aplicación se encuentra en los releases de este repositorio.
 
 [Ir al Release 1.0.0](https://github.com/esteguri/MoviesAppFlutter/releases/1.0.0/)
 
-[Link directo de descarga del APK v1.0.0](https://github.com/esteguri/MoviesAppFlutter/releases/download/1.0.0/movies-app-1.0.0.apk)
+[Link directo de descarga del APK v1.0.0](https://github.com/esteguri/MoviesAppFlutter/releases/download/1.0.0/movies-app-v1.0.0.apk)
 
 ## Primeros pasos
 
