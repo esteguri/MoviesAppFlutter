@@ -55,9 +55,10 @@ class Actor {
   }
 
   String getName() {
-    return name.length > 20
-        ? name = "${name.substring(0, 20)}..."
-        : name = name;
+    final displayName = name.split(" ").sublist(0, 2).join(" ");
+    return displayName.length > 20
+        ? "${displayName.substring(0, 20)}..."
+        : displayName;
   }
 }
 
