@@ -7,11 +7,12 @@ class MainHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: Get.height * 0.2,
+      height: size.height * 0.2,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: Get.width * 0.1,
+          horizontal: size.width * 0.1,
           vertical: 0,
         ),
         child: Column(

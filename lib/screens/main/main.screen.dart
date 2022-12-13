@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _moviesController.getMovies();
-
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppbarGeneral(),
       body: RefreshIndicator(
@@ -22,7 +22,7 @@ class MainScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints:
-                BoxConstraints(maxHeight: Get.height - Get.height * 0.1),
+                BoxConstraints(maxHeight: size.height - size.height * 0.1),
             child: Column(
               children: [
                 const MainHeader(),
