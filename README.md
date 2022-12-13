@@ -1,16 +1,8 @@
-# movies_app_imaginamos
+# Movies App
 
-A new Flutter project.
+Aplicación para la visualización de las mejores peliculas del momento y las mas populares, permite ver el detalle de cada una.
 
-## Getting Started
+## Primeros pasos
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- El proyecto hace uso de variables de entorno, por lo tanto debe configurar el `.env` en la raiz del proyecto. Puede tomar como base el archivo `.env.sample`.
+- Se debe compilar con versiones de Dart superiores a `2` por que hace uso de Null Safety

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/common/key-value.widget.dart';
 import 'package:movies_app/common/rating.widget.dart';
+import 'package:movies_app/models/movie.model.dart';
 import 'package:movies_app/screens/movie-detail/widgets/movie-actors.widget.dart';
 import 'package:movies_app/screens/movie-detail/widgets/movie-detail-appbar.widget.dart';
 import 'package:movies_app/screens/movie-detail/widgets/movie-title.widget.dart';
 import 'package:movies_app/theme/colors.theme.dart';
 
 class MovieDetailScreen extends StatelessWidget {
-  const MovieDetailScreen({super.key});
+  final Movie movie;
 
-  // TODO: Temporal
-  final String description =
-      "This is a website i have created where i share all my XD designs for free 🥳 If you like don't forget to press the fantastic letter L on your keyboard 🤓. And if you want to receive my last shots follow me.";
+  const MovieDetailScreen({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,10 @@ class MovieDetailScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       body: CustomScrollView(
         slivers: [
-          const MovieDetailAppbar(),
+          MovieDetailAppbar(
+            movieId: movie.id,
+            posterImg: movie.getPosterImg(),
+          ),
           SliverList(
             delegate: SliverChildListDelegate([
               const SizedBox(height: 10.0),
@@ -39,44 +41,44 @@ class MovieDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            const MovieTitle(),
+            MovieTitle(title: movie.title ?? ""),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _whatchNowButton(),
-                const Rating(rating: 3),
+                Rating(rating: movie.getRating()),
               ],
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Text(
-                description,
+                movie.overview ?? "",
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       height: 2,
                     ),
               ),
             ),
             const SizedBox(height: 10),
-            const MovieActors(),
+            MovieActors(movieId: movie.id),
             const SizedBox(height: 10),
             Column(
-              children: const [
+              children: [
                 KeyValue(
-                  keyText: "Studio",
-                  value: "Warner Bros",
+                  keyText: "Date",
+                  value: movie.getReleaseDate(),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 KeyValue(
-                  keyText: "Genre",
-                  value: "Action, Adventure, Fantasy",
+                  keyText: "Language",
+                  value: "${movie.originalLanguage?.toUpperCase()}",
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 KeyValue(
-                  keyText: "Release",
-                  value: "2018",
+                  keyText: "Adult content",
+                  value: movie.adult ? "Yes" : "No",
                 ),
-                SizedBox(height: 5)
+                const SizedBox(height: 5)
               ],
             )
           ],

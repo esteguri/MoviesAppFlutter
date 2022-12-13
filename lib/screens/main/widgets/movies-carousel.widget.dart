@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movies_app/models/movie.model.dart';
 import 'package:movies_app/screens/main/widgets/card-movie.widget.dart';
 
 class MoviesCarousel extends StatelessWidget {
   final String title;
+  final List<Movie> movies;
 
-  const MoviesCarousel({super.key, required this.title});
+  const MoviesCarousel({super.key, required this.title, required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +33,9 @@ class MoviesCarousel extends StatelessWidget {
           height: Get.height * 0.28,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: movies.length,
             itemBuilder: (context, index) {
-              return const CardMovie();
+              return CardMovie(movie: movies[index]);
             },
           ),
         ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/theme/colors.theme.dart';
 
 class MovieTitle extends StatelessWidget {
-  const MovieTitle({super.key});
+  final String title;
+
+  const MovieTitle({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,13 @@ class MovieTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text("Avatar", style: Theme.of(context).textTheme.headline4),
+        Expanded(
+          child: Text(
+            title,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
           decoration: BoxDecoration(

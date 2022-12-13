@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MovieDetailAppbar extends StatelessWidget {
-  const MovieDetailAppbar({super.key});
+  final String posterImg;
+  final int movieId;
+
+  const MovieDetailAppbar(
+      {super.key, required this.posterImg, required this.movieId});
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +17,16 @@ class MovieDetailAppbar extends StatelessWidget {
       pinned: true,
       actions: [
         IconButton(
-          icon: const Icon(Icons.favorite_border),
+          icon: const Icon(Icons.favorite_border, color: Colors.white),
           onPressed: () {},
         ),
       ],
-      flexibleSpace: const FlexibleSpaceBar(
-        background: Image(
-          fit: BoxFit.cover,
-          image: NetworkImage(
-            "https://pics.filmaffinity.com/Avatar_El_sentido_del_agua-593536896-large.jpg",
+      flexibleSpace: FlexibleSpaceBar(
+        background: Hero(
+          tag: movieId,
+          child: Image(
+            fit: BoxFit.cover,
+            image: NetworkImage(posterImg),
           ),
         ),
       ),
