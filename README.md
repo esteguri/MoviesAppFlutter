@@ -2,6 +2,12 @@
 
 Aplicación para la visualización de las mejores peliculas del momento y las mas populares, permite ver el detalle de cada una.
 
+## Acceso Web
+
+La aplicación tambien se compilo para flutter web. Ademas fue publicada en un sitio estatico:
+
+[Ir al sitio web](https://esteguri.github.io/MoviesAppWeb)
+
 ## Descargar artefacto
 
 El artefacto de la aplicación se encuentra en los releases de este repositorio.
