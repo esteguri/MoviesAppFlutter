@@ -28,7 +28,7 @@ class MoviesCarousel extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: Get.height * 0.26,
+          height: Get.height * 0.28,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 5,

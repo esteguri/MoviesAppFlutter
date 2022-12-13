@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:movies_app/common/rating.widget.dart';
+import 'package:movies_app/screens/movie-detail/movie-detail.screen.dart';
 import 'package:movies_app/theme/colors.theme.dart';
 
 class CardMovie extends StatelessWidget {
@@ -7,41 +10,42 @@ class CardMovie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10, bottom: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 160,
-            width: 150,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(10),
+    return InkWell(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        Get.to(() => MovieDetailScreen());
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10, bottom: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Container(
+                height: Get.height * 0.21,
+                width: Get.width * 0.35,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Image(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    "https://pics.filmaffinity.com/Avatar_El_sentido_del_agua-593536896-large.jpg",
+                  ),
+                ),
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            "Avangers: Endgame",
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-          RatingBar.builder(
-            initialRating: 3,
-            minRating: 1,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemSize: 18,
-            itemPadding: const EdgeInsets.only(right: 4),
-            unratedColor: ColorsApp.yellow,
-            itemBuilder: (context, _) => const Icon(
-              Icons.star,
-              color: Colors.amber,
+            const SizedBox(height: 10),
+            Text(
+              "Avatar: Endgame",
+              style: Theme.of(context).textTheme.bodyText1,
+              overflow: TextOverflow.ellipsis,
             ),
-            onRatingUpdate: (_) {},
-            ignoreGestures: true,
-          ),
-        ],
+            const Rating(rating: 3),
+          ],
+        ),
       ),
     );
   }

@@ -1,35 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_app/controllers/theme.controller.dart';
+import 'package:movies_app/common/appbar-general.widget.dart';
 import 'package:movies_app/screens/main/widgets/main-header.widget.dart';
 import 'package:movies_app/screens/main/widgets/movies-carousel.widget.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({super.key});
-
-  final _themeController = Get.put(ThemeController());
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Movie App",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            onPressed: _themeController.changeTheme,
-            icon: Obx(
-              () => Icon(
-                _themeController.isDarkMode.value
-                    ? Icons.light_mode
-                    : Icons.dark_mode,
-              ),
-            ),
-          )
-        ],
-      ),
+      appBar: AppbarGeneral(),
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxHeight: Get.height - Get.height * 0.1),
